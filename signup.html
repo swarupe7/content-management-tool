@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/tool.png">
+    <title>CMT</title>
+    <link rel="stylesheet" href="task_1.css">
+   
+</head>
+<body style="background-image: url(./img/remove.png);">
+    <header>
+        <h1>Content Management Tool</h1>
+    </header>
+    <div   style="text-align: center; height:100% ;" >
+
+        <section class="input-section">
+            <h2>Sign up</h2>
+            <div>
+                <label for="title">Username:</label>
+                <input type="text" id="username" placeholder="username">
+            </div>
+            <div>
+                <label for="content">Email:</label>
+                <input type="text" id="email" placeholder="Email"> 
+            </div>
+            <div>
+                <label for="image">Password:</label>
+                <input type="Password" id="password">
+            </div>
+            
+            <input type="submit" class="button" id="submit" name="submit" value="submit"> <br><br>
+       <p>If you have Account:</p><a href="login.html">Login</a>
+           
+           
+        </section>
+
+
+
+        
+       
+
+
+    </div>
+</body>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getDatabase,set,ref } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCU7ej4m-o7fFfgGtxfJ2ebsWusT0r8BQM",
+    authDomain: "auth-app-74352.firebaseapp.com",
+    databaseURL: "https://auth-app-74352-default-rtdb.firebaseio.com",
+    projectId: "auth-app-74352",
+    storageBucket: "auth-app-74352.appspot.com",
+    messagingSenderId: "988198129192",
+    appId: "1:988198129192:web:faa0e68d77d889fddb2f1d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database=getDatabase(app);
+  const auth = getAuth();
+  const signup=document.getElementById('submit');
+  signup.addEventListener('click',(e)=>{
+    var username=document.getElementById('username').value;
+    var email=document.getElementById('email').value;
+    var password=document.getElementById('password').value;
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    set(ref(database,'users/'+user.uid),{
+        username:username,
+        email:email
+    })
+    alert('user Created');
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage)
+    // ..
+  });
+
+  })
+</script>
+</html>

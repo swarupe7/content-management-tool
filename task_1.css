@@ -1,0 +1,63 @@
+
+/* task_1.css */
+
+body {
+    background-image: url(./img/remove.png);
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text color */
+    font-family: Arial, sans-serif; /* Change to your preferred font-family */
+}
+
+header {
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text color */
+    text-align: center;
+    padding: 10px;
+}
+
+.input-section {
+    background-color: #ffffff; /* White background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a card-like appearance */
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+.label {
+    color: #007bff; /* Blue text color */
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+a {
+    color: #007bff; /* Blue link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
